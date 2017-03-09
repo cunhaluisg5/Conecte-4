@@ -1,0 +1,39 @@
+h1{
+	text-align: center;
+}
+#geral{
+	width: 560px;
+	height: 560px;
+	margin: auto;
+	border: 1px solid black;
+	border-radius: 3%;
+    overflow: hidden;
+}
+#acoes > div, #casas > div{
+	width: 68px;
+	height: 68px;
+	margin: 5px;
+	border: 1px solid grey;
+	border-radius: 50%;
+	background-color: grey;
+	display: inline-block;
+	float: left;
+}
+#acoes{
+	height: 80px;
+}
+#casas{
+	background-color: blue;
+	height: 480px;
+}
+#casas > div{	
+	background-color: white;
+}
+
+div#casas > div.amarelo{
+	background-color: yellow;
+}
+div#casas > div.vermelho{
+	background-color: red;
+}
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Connect Four</title>
+		<link rel="stylesheet" type="text/css" href="estilo.css">
+		<meta charset="utf-8" />
+		
+	</head>
+	<body>
+		<h1>Conecte 4</h1>
+		<div id="geral">
+			<div id="acoes"></div>
+			<div id="casas"></div>
+		</div>
+		<script>
+			var divAcoes = document.getElementById("acoes");
+			var divCasas = document.getElementById("casas");
+
+			var casas = [
+					[0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0],
+			];
+
+			var vez =1;
+
+			for(var i = 0 ; i<7 ; i++){
+				var novoDiv = document.createElement('div');
+				divAcoes.appendChild(novoDiv);
+				novoDiv.addEventListener("click", (function(x){
+					return function(){
+						console.dir("clicou em " + x);
+						jogada(casas, x);
+					}
+				})(i)
+				);
+			}
+			for(var i = 0 ; i<6*7 ; i++){
+				var novoDiv = document.createElement('div');
+				divCasas.appendChild(novoDiv);
+			}
+
+			
+
+			console.log(casas);
+
+			function atualiza(){
+				for(var l = 0; l < casas.length; l++){
+					var linha = casas[l];
+					for(var c = 0; c < linha.length; c++){
+						casa = linha[c];
+						var divAtual = divCasas.children[l*7+c];
+						if(casa == 1){
+							divAtual.setAttribute('class', 'amarelo');
+						}else if(casa == 2){
+							divAtual.setAttribute('class', 'vermelho');
+						}else{
+							divAtual.setAttribute('class', ' ');
+						}
+					}
+				}
+			};
+
+			function jogada(casas, coluna){
+				console.log(casas);
+				for (var i= casas.length-1; i >=0; i--) {					
+					if(casas[i][coluna] === 0){
+						casas[i][coluna] = vez;
+						break;
+					}
+				};				
+        
+		        if(vez == 1) {
+		          vez = 2;
+		        } else {
+		          vez = 1;
+		        }
+		        atualiza();
+		   	}
+
+			atualiza();
+			
+		</script>
+	    
+	</body>
+</html>
